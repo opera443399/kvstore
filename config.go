@@ -1,11 +1,11 @@
 package main
 
 import (
-	"fmt"
 	"flag"
+	"fmt"
 	"log"
-	"runtime"
 	"os"
+	"runtime"
 
 	backends "github.com/opera443399/kvstore/backends"
 )
@@ -13,10 +13,10 @@ import (
 //BackendsConfig kvstore config
 type BackendsConfig = backends.Config
 
-// A Config structure is used to configure confd.
+// A Config structure is used to configure app.
 type Config struct {
 	BackendsConfig
-	PrintVersion  bool
+	PrintVersion bool
 }
 
 var config Config
@@ -74,7 +74,7 @@ func init() {
 
 	flag.Parse()
 	if config.PrintVersion {
-		fmt.Printf("confd %s (Git SHA: %s, Go Version: %s)\n", Version, GitSHA, runtime.Version())
+		fmt.Printf("kvstore %s (Git SHA: %s, Go Version: %s)\n", Version, GitSHA, runtime.Version())
 		os.Exit(0)
 	}
 	if err := initConfig(); err != nil {
